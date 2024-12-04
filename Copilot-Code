@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Manipulation</title>
+    <style>
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 50px;
+        }
+        .textbox {
+            margin: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            width: 300px;
+        }
+        .output {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #000;
+            width: 300px;
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <input type="text" id="inputText" class="textbox" placeholder="How can I help?">
+        <div id="Gemini" class="textbox"></div>
+        <div id="Copilot" class="textbox"></div>
+        <div id="ChatGPT" class="textbox"></div>
+        <button onclick="processText()">Copy and Paste</button>
+        <div id="outputText" class="output"></div>
+    </div>
+
+    <script>
+        function processText() {
+            // Get the input text
+            var inputText = document.getElementById("inputText").value;
+
+            // Place the text into three different text boxes
+            document.getElementById("textBox1").innerText = inputText;
+            document.getElementById("textBox2").innerText = inputText;
+            document.getElementById("textBox3").innerText = inputText;
+
+            // Copy the text from one of the text boxes
+            var copiedText = document.getElementById("textBox1").innerText;
+
+            // Paste the copied text into another text box
+            document.getElementById("outputText").innerText = copiedText;
+        }
+    </script>
+</body>
+</html>
