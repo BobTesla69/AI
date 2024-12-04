@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Distribution and Combination</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 10px;
+        }
+        .textbox-container {
+            margin-bottom: 15px;
+        }
+        textarea {
+            width: 100%;
+            height: 80px;
+            padding: 10px;
+            font-size: 16px;
+        }
+        button {
+            padding: 10px 15px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h1>Text Distribution and Combination</h1>
+
+    <!-- Input Box for user text -->
+    <div class="textbox-container">
+        <label for="inputTextbox">Enter your text:</label>
+        <textarea id="inputTextbox" placeholder="Enter text here..."></textarea>
+    </div>
+
+    <!-- Button to trigger the split and copy process -->
+    <button onclick="distributeAndCombine()">Distribute and Combine</button>
+
+    <!-- Three separate text boxes for distributed text -->
+    <div class="textbox-container">
+        <label for="Gemini">Gemini:</label>
+        <textarea id="Gemini" readonly></textarea>
+    </div>
+
+    <div class="textbox-container">
+        <label for="Copilot">Copilot:</label>
+        <textarea id="textbox2" readonly></textarea>
+    </div>
+
+    <div class="textbox-container">
+        <label for="ChatGPT">ChatGPT:</label>
+        <textarea id="ChatGPT" readonly></textarea>
+    </div>
+
+    <!-- Final result textbox to show the combined output -->
+    <div class="textbox-container">
+        <label for="resultTextbox">Final Combined Text:</label>
+        <textarea id="resultTextbox" readonly placeholder="Result will appear here..."></textarea>
+    </div>
+
+    <script>
+        function distributeAndCombine() {
+            // Get the text from the input box
+            const inputText = document.getElementById('inputTextbox').value;
+
+            // Split the input text into 3 parts (or use as much as possible)
+            const length = inputText.length;
+            const part1 = inputText.substring(0, Math.ceil(length / 3));
+            const part2 = inputText.substring(Math.ceil(length / 3), Math.ceil(2 * length / 3));
+            const part3 = inputText.substring(Math.ceil(2 * length / 3));
+
+            // Place the parts into the three separate textboxes
+            document.getElementById('textbox1').value = part1;
+            document.getElementById('textbox2').value = part2;
+            document.getElementById('textbox3').value = part3;
+
+            // Combine the parts and display in the final result textbox
+            const combinedText = part1 + "\n" + part2 + "\n" + part3;
+            document.getElementById('resultTextbox').value = combinedText;
+        }
+    </script>
+</body>
+</html>
